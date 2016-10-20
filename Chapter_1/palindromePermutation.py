@@ -59,8 +59,7 @@ def palindrome_no_spaces(yourString):
     #char_set[ord(" ")] = 0                 # Or you can use ord() again instead of a random number appearing out of nowhere.
     char_set[idx_space] = 0                 # Using a variable may even be better.
     
-    for element in char_set:
-        print(odd_nb_char)              
+    for element in char_set:           
         if element % 2 != 0:                
             if odd_nb_char == True:         
                 return False                
@@ -84,7 +83,7 @@ def palindrome_alphabet(yourString):
                                              
     
     for char in yourString:
-        lower_char = lowercase(char)
+        lower_char = char.lower()
         char_set[ord(lower_char)] += 1;         
 
     char_set[idx_space] = 0                 # Using a variable may even be better.
@@ -102,31 +101,31 @@ def palindrome_alphabet(yourString):
 
 class Test(unittest.TestCase):
     '''Test Cases'''
-    data_sensitive = [('aa' , True),
-                      ('a a', True),                    # Space counts as character.
+    
+    data_sensitive = [('aa'  , True),
+                      ('a a' , True),                   # Space counts as character.
                       ('a Aa', False),                  # Two characters with odd numbers occurences.
                       ('jhsabckujahjsbckj' , True),
                       ('jhsabckuj ahjsbckj', False)]
 
-    data_no_spaces = [('aa'   , True),
-                      ('a a'  , True),                  # Space counts as character.
-                      ('a Aa' , True),                  # Space has been reset, so only one odd character.
-                      ('a   Aa', True),                 # Works with odd number of spaces.
+    data_no_spaces = [('aa'      , True),
+                      ('a a'     , True),                # Space counts as character.
+                      ('a Aa'    , True),                # Space has been reset, so only one odd character.
+                      ('a   Aa'  , True),                # Works with odd number of spaces.
                       ('Tact Coa', False),
                       ('tact coa', True),
                       ('jhsabckuj ahjsbckj', True),
-                      ('Not a Palindrome', False),
-                      ('no x in nixon', True)]
+                      ('Not a Palindrome'  , False),
+                      ('no x in nixon'     , True)]
     
-    data = [('a a', True)]
-        #('Tact Coa', True)]#,
-        #('jhsabckuj ahjsbckj', True),
-        #('Able was I ere I saw Elba', True),
-        #('So patient a nurse to nurse a patient so', False),
-        #('Random Words', False),
-        #('Not a Palindrome', False),
-        #('no x in nixon', True),
-        #('azAZ', True)]
+    data_alphabet   = [('Tact Coa', True),
+                      ('jhsabckuj ahjsbckj', True),
+                      ('Able was I ere I saw Elba', True),
+                      ('So patient a nurse to nurse a patient so', False),
+                      ('Random Words',     False),
+                      ('Not a Palindrome', False),
+                      ('no x in nixon',    True),
+                      ('azAZ', True)]
     
     def test_pal_sensitive(self):
         for [test_string, expected] in self.data_sensitive:
@@ -138,9 +137,9 @@ class Test(unittest.TestCase):
             actual = palindrome_no_spaces(test_string)
             self.assertEqual(actual, expected)
 
-    def test_pal_perm(self):
-        for [test_string, expected] in self.data:
-            actual = palindrome_sensitive(test_string)
+    def test_pal_alphabet(self):
+        for [test_string, expected] in self.data_alphabet:
+            actual = palindrome_alphabet(test_string)
             self.assertEqual(actual, expected)
 
 
