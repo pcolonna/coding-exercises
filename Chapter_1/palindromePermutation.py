@@ -23,21 +23,21 @@ import unittest
 
 def palindrome_sensitive(yourString):
 
-	odd_nb_char = False;					# Is set to True if a character appears an odd number of times.
-	char_set 	= [0 for _ in range(128)]	# Will be used to count the number of times a character is in the string. 
-											# Array the lenght of the ascii table. 
-	
-	for char in yourString:
-		char_set[ord(char)] += 1;			# ord(char) gives us the index in the array. Increment by one each time a character is found.
+    odd_nb_char = False;                    # Is set to True if a character appears an odd number of times.
+    char_set    = [0 for _ in range(128)]   # Will be used to count the number of times a character is in the string. 
+                                            # Array the lenght of the ascii table. 
+    
+    for char in yourString:
+        char_set[ord(char)] += 1;           # ord(char) gives us the index in the array. Increment by one each time a character is found.
 
-	for element in char_set:				# Iterate through your set of characters.
-		if element % 2 != 0:				# Check if it's an odd number. 
-			if odd_nb_char == True:			# If it's not the first time a character appears an odd number of times,
-				return False				# the string can't be a palindrome.
-			else:
-				odd_nb_char = True			# Otherwise update odd_nb_char
+    for element in char_set:                # Iterate through your set of characters.
+        if element % 2 != 0:                # Check if it's an odd number. 
+            if odd_nb_char == True:         # If it's not the first time a character appears an odd number of times,
+                return False                # the string can't be a palindrome.
+            else:
+                odd_nb_char = True          # Otherwise update odd_nb_char
 
-	return True	
+    return True 
 
 
 
@@ -47,28 +47,27 @@ def palindrome_sensitive(yourString):
 
 def palindrome_no_spaces(yourString):
 
-	idx_space   = ord(" ")					# ASCII code point of SPACE. Index of element we want to reset.
-	odd_nb_char = False;					
-	char_set 	= [0 for _ in range(128)]		
-											 
-	
-	for char in yourString:
-		char_set[ord(char)] += 1;			
+    idx_space   = ord(" ")                  # ASCII code point of SPACE. Index of element we want to reset.
+    odd_nb_char = False;                    
+    char_set    = [0 for _ in range(128)]       
+                                             
+    
+    for char in yourString:
+        char_set[ord(char)] += 1;           
 
-	#char_set[32]       = 0					# 32 is the ASCII code point of SPACE.
-	#char_set[ord(" ")] = 0					# Or you can use ord() again instead of a random number appearing out of nowhere.
-	
-	char_set[idx_space] = 0					# Using a variable may even be better.
-	
-	for element in char_set:
-		print(odd_nb_char)				
-		if element % 2 != 0:				
-			if odd_nb_char == True:			
-				return False				
-			else:
-				odd_nb_char = True			
+    #char_set[32]       = 0                 # 32 is the ASCII code point of SPACE.
+    #char_set[ord(" ")] = 0                 # Or you can use ord() again instead of a random number appearing out of nowhere.
+    char_set[idx_space] = 0                 # Using a variable may even be better.
+    
+    for element in char_set:
+        print(odd_nb_char)              
+        if element % 2 != 0:                
+            if odd_nb_char == True:         
+                return False                
+            else:
+                odd_nb_char = True          
 
-	return True			
+    return True         
 
 
 
@@ -79,72 +78,72 @@ def palindrome_no_spaces(yourString):
 
 def palindrome_alphabet(yourString):
 
-	idx_space   = ord(" ")					# ASCII code point of SPACE. Index of element we want to reset.
-	odd_nb_char = False;					
-	char_set 	= [0 for _ in range(128)]		
-											 
-	
-	for char in yourString:
-		lower_char = lowercase(char)
-		char_set[ord(lower_char)] += 1;			
+    idx_space   = ord(" ")                  # ASCII code point of SPACE. Index of element we want to reset.
+    odd_nb_char = False;                    
+    char_set    = [0 for _ in range(128)]       
+                                             
+    
+    for char in yourString:
+        lower_char = lowercase(char)
+        char_set[ord(lower_char)] += 1;         
 
-	char_set[idx_space] = 0					# Using a variable may even be better.
+    char_set[idx_space] = 0                 # Using a variable may even be better.
 
-	for element in char_set:				
-		if element % 2 != 0:				
-			if odd_nb_char == True:			
-				return False				
-			else:
-				odd_nb_char = True			
+    for element in char_set:                
+        if element % 2 != 0:                
+            if odd_nb_char == True:         
+                return False                
+            else:
+                odd_nb_char = True          
 
-	return True								
+    return True                             
 
 
 
 class Test(unittest.TestCase):
-	'''Test Cases'''
-	data_sensitive = [('aa' , True),
-					  ('a a', True),					# Space counts as character.
-					  ('a Aa', False),					# Two characters with odd numbers occurences.
-					  ('jhsabckujahjsbckj' , True),
-					  ('jhsabckuj ahjsbckj', False)]
+    '''Test Cases'''
+    data_sensitive = [('aa' , True),
+                      ('a a', True),                    # Space counts as character.
+                      ('a Aa', False),                  # Two characters with odd numbers occurences.
+                      ('jhsabckujahjsbckj' , True),
+                      ('jhsabckuj ahjsbckj', False)]
 
-	data_no_spaces = [('aa'   , True),
-					  ('a a'  , True),					# Space counts as character.
-					  ('a Aa' , True),					# Space has been reset, so only one odd character.
-					  ('a   Aa', True),					# Works with odd number of spaces.
-					  ('Tact Coa', False),
-					  ('tact coa', True),
-					  ('jhsabckuj ahjsbckj', True),
-					  ('Not a Palindrome', False),
-					  ('no x in nixon', True)]
-	
-	data = [('a a', True)]
-		#('Tact Coa', True)]#,
-		#('jhsabckuj ahjsbckj', True),
-		#('Able was I ere I saw Elba', True),
-		#('So patient a nurse to nurse a patient so', False),
-		#('Random Words', False),
-		#('Not a Palindrome', False),
-		#('no x in nixon', True),
-		#('azAZ', True)]
-	
-	def test_pal_sensitive(self):
-		for [test_string, expected] in self.data_sensitive:
-			actual = palindrome_sensitive(test_string)
-			self.assertEqual(actual, expected)
+    data_no_spaces = [('aa'   , True),
+                      ('a a'  , True),                  # Space counts as character.
+                      ('a Aa' , True),                  # Space has been reset, so only one odd character.
+                      ('a   Aa', True),                 # Works with odd number of spaces.
+                      ('Tact Coa', False),
+                      ('tact coa', True),
+                      ('jhsabckuj ahjsbckj', True),
+                      ('Not a Palindrome', False),
+                      ('no x in nixon', True)]
+    
+    data = [('a a', True)]
+        #('Tact Coa', True)]#,
+        #('jhsabckuj ahjsbckj', True),
+        #('Able was I ere I saw Elba', True),
+        #('So patient a nurse to nurse a patient so', False),
+        #('Random Words', False),
+        #('Not a Palindrome', False),
+        #('no x in nixon', True),
+        #('azAZ', True)]
+    
+    def test_pal_sensitive(self):
+        for [test_string, expected] in self.data_sensitive:
+            actual = palindrome_sensitive(test_string)
+            self.assertEqual(actual, expected)
 
-	def test_pal_no_spaces(self):
-		for [test_string, expected] in self.data_no_spaces:
-			actual = palindrome_no_spaces(test_string)
-			self.assertEqual(actual, expected)
+    def test_pal_no_spaces(self):
+        for [test_string, expected] in self.data_no_spaces:
+            actual = palindrome_no_spaces(test_string)
+            self.assertEqual(actual, expected)
 
-	def test_pal_perm(self):
-		for [test_string, expected] in self.data:
-			actual = palindrome_sensitive(test_string)
-			self.assertEqual(actual, expected)
+    def test_pal_perm(self):
+        for [test_string, expected] in self.data:
+            actual = palindrome_sensitive(test_string)
+            self.assertEqual(actual, expected)
 
 
 if  __name__ == "__main__":
-	palindrome_no_spaces('a Aa')
-	unittest.main()
+    palindrome_no_spaces('a Aa')
+    unittest.main()
