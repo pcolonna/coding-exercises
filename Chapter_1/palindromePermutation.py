@@ -101,7 +101,8 @@ def palindrome_alphabet(yourString):
 
 class Test(unittest.TestCase):
     '''Test Cases'''
-    data_sensitive = [('a a', True)]
+    data_sensitive = [('aa', True),
+    				  ('a a', True)]
     data = [('a a', True)]
         #('Tact Coa', True)]#,
         #('jhsabckuj ahjsbckj', True),
