@@ -57,9 +57,14 @@ def palindrome_no_spaces(yourString):
 
 	#char_set[32]       = 0					# 32 is the ASCII code point of SPACE.
 	#char_set[ord(" ")] = 0					# Or you can use ord() again instead of a random number appearing out of nowhere.
+	#print(idx_space)
+	#print(char_set[idx_space])
 	char_set[idx_space] = 0					# Using a variable may even be better.
+	#print(char_set)
+	#print(char_set[idx_space])
 
-	for element in char_set:				
+	for element in char_set:
+		print(odd_nb_char)				
 		if element % 2 != 0:				
 			if odd_nb_char == True:			
 				return False				
@@ -101,8 +106,22 @@ def palindrome_alphabet(yourString):
 
 class Test(unittest.TestCase):
     '''Test Cases'''
-    data_sensitive = [('aa', True),
-    				  ('a a', True)]
+    data_sensitive = [('aa' , True),
+    				  ('a a', True),					# Space counts as character.
+    				  ('a Aa', False),					# Two characters with odd numbers occurences.
+    				  ('jhsabckujahjsbckj' , True),
+    				  ('jhsabckuj ahjsbckj', False)]
+
+    data_no_spaces = [('aa'   , True),
+    				  ('a a'  , True),					# Space counts as character.
+    				  ('a Aa' , True),					# Space has been reset, so only one odd character.
+    				  ('a   Aa', True),					# Works with odd number of spaces.
+    				  ('Tact Coa', False),
+    				  ('tact coa', True),
+        			  ('jhsabckuj ahjsbckj', True),
+        			  ('Not a Palindrome', False),
+        			  ('no x in nixon', True)]
+    
     data = [('a a', True)]
         #('Tact Coa', True)]#,
         #('jhsabckuj ahjsbckj', True),
@@ -112,6 +131,16 @@ class Test(unittest.TestCase):
         #('Not a Palindrome', False),
         #('no x in nixon', True),
         #('azAZ', True)]
+    
+    def test_pal_sensitive(self):
+        for [test_string, expected] in self.data_sensitive:
+            actual = palindrome_sensitive(test_string)
+            self.assertEqual(actual, expected)
+
+    def test_pal_no_spaces(self):
+        for [test_string, expected] in self.data_no_spaces:
+            actual = palindrome_no_spaces(test_string)
+            self.assertEqual(actual, expected)
 
     def test_pal_perm(self):
         for [test_string, expected] in self.data:
@@ -120,4 +149,5 @@ class Test(unittest.TestCase):
 
 
 if  __name__ == "__main__":
+	palindrome_no_spaces('a Aa')
 	unittest.main()
