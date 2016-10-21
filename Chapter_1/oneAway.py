@@ -28,7 +28,34 @@ def check_insertion(string1, string2):
 	idx_str2 = 0
 	
 	for i in range(len(string1)):
-		if string1[i] == 
+		
+		if string1[i] != string2[idx_str2] and already_inserted == True:
+			return False
+		
+		if string1[i] != string2[idx_str2] and already_inserted == False:
+			already_inserted = True
+			idx_str2 = max(0, idx_str2 - 1)
+
+		else:
+			idx_str2 += 1
+
+	return True
+
+def check_replace(string1, string2):
+
+	already_replaced = False;
+	idx_str2 = 0
+	
+	for i in range(len(string1)):
+		if string1[i] != string2[i] and already_inserted == True:
+			return False
+		
+		if string1[i] != string2[i] and already_inserted == False:
+			already_inserted = True
+			
+
+	return True
+
 
 def return check_replace(string1, string2):
 if __name__ == "__main__":
