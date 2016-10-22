@@ -44,46 +44,78 @@ def one_away(string1, string2):
 
 def check_insertion(string1, string2):
 
-    already_inserted = False;
-    i_short_str = 0
+    already_inserted = False
+    i, i_short_str = 0, 0
 
     long_str  = string1 if len(string1) > len(string2) else string2         # Conditional assignement, depending on the length of each string.
     short_str = string1 if len(string1) < len(string2) else string2         # Probaly better than if...else, but could be improved.
 
-    for i in range(len(string1)):
-        
+    while i < len(long_str) and i_short_str < len(short_str):
+       
         if long_str[i] != short_str[i_short_str] and already_inserted:      
             return False
         
-        if long_str[i] != short_str[i_short_str] and not already_inserted:
+        elif long_str[i] != short_str[i_short_str] and not already_inserted:
             already_inserted = True
-
-            #   Following line actually useless. Wrong even...
-            #i_short_str = max(0, i_short_str - 1)                          # We shift the index we look at in the shorter string. Make sure we 
-                                                                            # don't go into the negative if we insert from the beginning.
+            i += 1                                                           # Only increment one (the longesdt here)
+                               
         else:
-            i_short_str += 1                                                # If equals, we increment and keep going.
+            i += 1
+            i_short_str += 1                                                 # If equals, we increment both and keep going.
 
     return True
+
 
 # If the same length, we check how many replacement we need to make.
 # We just compare character by character.
 
 def check_replace(string1, string2):
 
-    already_replaced = False;
-    i_short_str = 0
+    already_replaced = False
     
     for i in range(len(string1)):
-        if long_str[i] != short_str[i_short_str] and already_inserted:      # More than one edit.
+        if string1[i] != string2[i] and already_replaced:      # More than one edit.
             return False
         
-        if long_str[i] != short_str[i_short_str] and not already_inserted:
-            already_inserted = True
+        if string1[i] != string2[i] and not already_replaced:
+            already_replaced = True
             
     return True
 
 
-def return check_replace(string1, string2):
+# Tests from solution.
+class Test(unittest.TestCase):
+    '''Test Cases'''
+    data = [
+        ('pale', 'ple', True),
+        ('pales', 'pale', True),
+        ('pale', 'bale', True),
+        ('paleabc', 'pleabc', True),
+        ('pale', 'ble', False),
+        ('a', 'b', True),
+        ('', 'd', True),
+        ('d', 'de', True),
+        ('pale', 'pale', True),
+        ('pale', 'ple', True),
+        ('ple', 'pale', True),
+        ('pale', 'bale', True),
+        ('pale', 'bake', False),
+        ('pale', 'pse', False),
+        ('ples', 'pales', True),
+        ('pale', 'pas', False),
+        ('pas', 'pale', False),
+        ('pale', 'pkle', True),
+        ('pkle', 'pable', False),
+        ('pal', 'palks', False),
+        ('palks', 'pal', False)
+    ]
+
+    def test_one_away(self):
+        for [test_s1, test_s2, expected] in self.data:
+            actual = one_away(test_s1, test_s2)
+            self.assertEqual(actual, expected)
+
+
+
 if __name__ == "__main__":
     unittest.main()
