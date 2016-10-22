@@ -1,26 +1,27 @@
 # Question 3: Palindrome Permutation
 
-# Our palindrome permutation can have either an even number of occurences for each character
-# or one odd and all the rest even.
-# 
-# We count the occurences in char_set.
-# Then we check if the parity of each element.
-# 
-# odd_nb_char tells us if a character alrerady appeared an odd number of times, and allows us
-# to stop early if necessary.
-
+"""
+    Our palindrome permutation can have either an even number of occurences for each character
+    or one odd and all the rest even.
+    
+    We count the occurences in char_set.
+    Then we check if the parity of each element.
+    
+    odd_nb_char tells us if a character alrerady appeared an odd number of times, and allows us
+    to stop early if necessary.
+"""
 
 import unittest
 
-
-# This version is case sensitive. Very case sensitive.
-# By that I mean that all characters are counted separately, even spaces.
-# So "aa" is true but not "aA".
-# Also "aAa" is true but not "aA a", and "aA  a" (two spaces) is a palindrome again.
-# 
-# We need to make some changes if we want to have the usually expected behavior, 
-# case insensitive and oblivious to spaces.
-
+"""
+    This version is case sensitive. Very case sensitive.
+    By that I mean that all characters are counted separately, even spaces.
+    So "aa" is true but not "aA".
+    Also "aAa" is true but not "aA a", and "aA  a" (two spaces) is a palindrome again.
+    
+    We need to make some changes if we want to have the usually expected behavior, 
+    case insensitive and oblivious to spaces.
+"""
 def palindrome_sensitive(yourString):
 
     odd_nb_char = False;                    # Is set to True if a character appears an odd number of times.
@@ -40,11 +41,11 @@ def palindrome_sensitive(yourString):
     return True 
 
 
-
-# Here we deal with the spaces.
-# A quick way to ignore them is to reset the element in char_set corresponding to SPACE
-# to zero.
-
+"""
+    Here we deal with the spaces.
+    A quick way to ignore them is to reset the element in char_set corresponding to SPACE
+    to zero.
+"""
 def palindrome_no_spaces(yourString):
 
     idx_space   = ord(" ")                  # ASCII code point of SPACE. Index of element we want to reset.
@@ -69,12 +70,12 @@ def palindrome_no_spaces(yourString):
     return True         
 
 
-
-# We assume here we are only interested to "normal" palindromes.
-# Meaning we only receive letters, it's case insensitive and spaces don't matter.
-# 
-# One solution is just to lowercase every character before counting/updating char_set.
-
+"""
+    We assume here we are only interested to "normal" palindromes.
+    Meaning we only receive letters, it's case insensitive and spaces don't matter.
+    
+    One solution is just to lowercase every character before counting/updating char_set.
+"""
 def palindrome_alphabet(yourString):
 
     idx_space   = ord(" ")                  # ASCII code point of SPACE. Index of element we want to reset.

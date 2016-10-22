@@ -3,10 +3,11 @@
 import unittest
 import numpy as np
 
-# First version.
-# In an array, add one everytime a character appears in string1, minus 1 when appears in string2.
-# The index is defined by ord(char), which returns an integer. The Unicode code point of that character.
-
+"""
+    First version.
+    In an array, add one everytime a character appears in string1, minus 1 when appears in string2.
+    The index is defined by ord(char), which returns an integer. The Unicode code point of that character.
+"""
 def check_permutation1(string1, string2):
 
     if len(string1) != len(string2):
@@ -26,13 +27,14 @@ def check_permutation1(string1, string2):
 
     return True
 
-# Second version with numpy.
-# 
-# numpy.any(a) checks if any element evaluate to True.
-# If permutation, every elements are zero and so evaluates to False. 
-# The 'not' then give us the right value.
-# Shouldn't change the time complexity
-
+"""
+    Second version with numpy.
+    
+    numpy.any(a) checks if any element evaluate to True.
+    If permutation, every elements are zero and so evaluates to False. 
+    The 'not' then give us the right value.
+    Shouldn't change the time complexity
+"""
 def check_permutation(string1, string2):
 
     if len(string1) != len(string2):
@@ -47,7 +49,7 @@ def check_permutation(string1, string2):
 
     
     return not np.any(char_set)         
-    
+   
 # Test from solutions.
 # In original code, pass test_string instead of test_string[0],test_string[1].
 class Test(unittest.TestCase):

@@ -4,11 +4,12 @@ import unittest
 import random
 import string
 
-# First solution. Very Basic.
-# Compare every letter with every other letter.
-# 
-# Time complexity O(n^2).
-
+"""
+    First solution. Very Basic.
+    Compare every letter with every other letter.
+    
+    Time complexity O(n^2).
+"""
 def isUnique(yourString):
     
     if len(yourString) > 128:
@@ -22,14 +23,14 @@ def isUnique(yourString):
         return True
 
 
-
-# Solution from book
-# Create an array of boolean the size of the ASCII table.
-# Initialize at False. When a character i is found put the element i at True.
-# If you see it again, it's already at True and you know it's not unique. 
-# 
-# Time complexity O(n).
-
+"""
+    Solution from book
+    Create an array of boolean the size of the ASCII table.
+    Initialize at False. When a character i is found put the element i at True.
+    If you see it again, it's already at True and you know it's not unique. 
+    
+    Time complexity O(n).
+"""
 def isUnique2(string):
     # Assuming character set is ASCII (128 characters)
     if len(string) > 128:
