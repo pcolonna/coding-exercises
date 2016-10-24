@@ -1,6 +1,6 @@
 # Question 1.7: Rotate Matrix
 
-#Solution from book...
+#Solution from book.
 
 import unittest
 
@@ -53,7 +53,7 @@ def rotate_matrix_inside_out(matrix):
             # top -> right
             matrix[i][- layer - 1] = top
 
-    print(matrix)
+    
     return matrix
 
 class Test(unittest.TestCase):
