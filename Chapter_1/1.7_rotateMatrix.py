@@ -36,10 +36,7 @@ def rotate_matrix_inside_out(matrix):
     n = len(matrix)
     
     for layer in range(n // 2, -1, -1):
-        print("layer " + str(layer))
         first, last = layer, n - layer - 1
-        print("first "+ str(first))
-        print("last " + str(last))
         for i in range(first, last):
             # save top
             top = matrix[layer][i]
