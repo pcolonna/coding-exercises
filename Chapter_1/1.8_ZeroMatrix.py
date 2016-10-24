@@ -73,7 +73,45 @@ def zero_matrix_improved(matrix):
     
     return matrix
 
+"""
+    In this version, we reduce the space complexity by not copying the matrix but using two lists instead.
+    One mark the columns to be set to zero et another one for the lines.
+"""
+def zero_matrix(matrix):
 
+    columns_to_zero = []
+    lines_to_zero   = []
+
+    lines      = len(matrix)
+    columns    = len(matrix[0])
+
+    for i in range(lines):
+        for j in range(columns):
+            if matrix[i][j] == 0:
+                lines_to_zero.append(i)
+                columns_to_zero.append(j)
+
+    for line in lines_to_zero:
+        matrix = nullify_line(matrix, line)
+    for column in columns_to_zero:
+        matrix = nullify_column(matrix, column)
+
+    return matrix
+
+""" Set to zeros the appropriate line."""
+def nullify_line(mat, line):
+    # Zeros on the line.
+    for i in range(len(mat[0])):
+        mat[line][i] = 0
+    return mat
+
+""" Set to zeros the appropriate column."""
+def nullify_column(mat, column):   
+    # Zeros on the columns.
+    for j in range(len(mat)):
+        mat[j][column] = 0
+    
+    return mat
 
 class Test(unittest.TestCase):
     '''Test Cases'''
@@ -109,8 +147,22 @@ class Test(unittest.TestCase):
         ])
     ]
 
-    def test_zero_matrix(self):
-        
+    data3 = [
+        ([
+            [1, 2, 3, 4, 0],
+            [6, 0, 8, 9, 10],
+            [11, 12, 13, 14, 15],
+            [16, 0, 18, 19, 20],
+            [21, 22, 23, 24, 25]
+        ], [
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0],
+            [11, 0, 13, 14, 0],
+            [0, 0, 0, 0, 0],
+            [21, 0, 23, 24, 0]
+        ])
+    ]
+    def test_zero_matrix_copy(self):
         for [test_matrix, expected] in self.data:
             actual = zero_matrix_with_copy(test_matrix)
             self.assertEqual(actual, expected)
@@ -120,6 +172,10 @@ class Test(unittest.TestCase):
             actual = zero_matrix_improved(test_matrix)
             self.assertEqual(actual, expected)
 
+    def test_zero_matrix(self):
+        for [test_matrix, expected] in self.data3:
+            actual = zero_matrix(test_matrix)
+            self.assertEqual(actual, expected)
 
 if __name__ == "__main__":
     unittest.main()
