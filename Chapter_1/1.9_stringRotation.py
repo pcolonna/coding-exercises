@@ -45,7 +45,7 @@ def is_substring_manual(string, sub):
 			isSubstring = True
 		
 		elif string[i] != sub[0]:
-			index = 1
+			index = 0
 			i += 1
 			isSubstring = False
 		
