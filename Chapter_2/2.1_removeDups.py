@@ -25,5 +25,25 @@ def find_duplicates(your_list):
 
 	return clean_list
 
+"""
+	Concerning the time complexity.
+
+	Iterating through the list is O(N).
+	Append is apparently implemented in O(1).
+	The "x in s" is sequential and therefore in O(N).
+
+	So every time we test and search for an element, we go through the list
+	until we either find the element or run out of list. We don't exactly do N operations
+	each times, we can approximate it that way. 
+
+	So this method would in O(NxN) = O(N^2).
+"""
+
+"""
+	A better way would be to use a dictionary. In python, dict are implemented as hash tables.
+	And with hash tables, search/access can be done in O(1) on average.
+
+	It would reduce complexity to O(1).
+"""
 if __name__ == "__main__":
 	unittest.main()
