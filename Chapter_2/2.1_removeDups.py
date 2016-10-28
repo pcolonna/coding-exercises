@@ -44,6 +44,22 @@ def find_duplicates(your_list):
 	And with hash tables, search/access can be done in O(1) on average.
 
 	It would reduce complexity to O(1).
+
+	(**) Well... probably not the best style. Maybe not safe?
 """
+
+def find_duplicates(your_list):
+
+	clean_dict = {}
+	clean_list = []
+
+	for element in your_list:
+		if not(element in clean_dict):
+			clean_dict[element] = ""			# Add the element as key. The value doesn't matter. (**) 
+			clean_list.append(element)			# Still append a list if we want to return a list in the end and not a dict.
+
+	return clean_list
+	
+
 if __name__ == "__main__":
 	unittest.main()
