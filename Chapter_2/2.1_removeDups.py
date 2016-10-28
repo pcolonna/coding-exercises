@@ -15,12 +15,12 @@ import unittest
 	for the first time. Therefore we append.
 """
 
-def find_duplicates(your_list):
+def find_duplicates_list(your_list):
 
-	clean_list = []
+	clean_list = []								# Will be used to build our new list without duplicates.
 
-	for element in your_list:
-		if not(element in clean_list):
+	for element in your_list:	
+		if not(element in clean_list):			
 			clean_list.append(element)
 
 	return clean_list
@@ -48,7 +48,7 @@ def find_duplicates(your_list):
 	(**) Well... probably not the best style. Maybe not safe?
 """
 
-def find_duplicates(your_list):
+def find_duplicates_dict(your_list):
 
 	clean_dict = {}
 	clean_list = []
@@ -60,6 +60,17 @@ def find_duplicates(your_list):
 
 	return clean_list
 	
+class Test(unittest.TestCase):
+    '''Test Cases'''
+    data = [ ([3,3,1,4,27,29,27,3], [3,1,4,27,29])]
+
+    def test_remove_dup(self):
+        for [original, expected] in self.data:
+            actual = find_duplicates_list(original)
+            self.assertEqual(actual, expected)
 
 if __name__ == "__main__":
+	
+	print(find_duplicates_list([3,3,1,4,27,29,27,3]))
+	print(find_duplicates_dict([3,3,1,4,27,29,27,3]))
 	unittest.main()
