@@ -6,6 +6,6 @@
 	We will use deque, double-ended queue. According to the doc, they are implemented 
 	as a doubly-linked list, but will only use operations available to single linked list.
 """
+from collections import deque
 
 def find_kth(your_list, k):
-	
