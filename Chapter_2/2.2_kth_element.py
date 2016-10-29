@@ -21,6 +21,28 @@ def find_kth(your_list, k):
 
 	return your_list.pop()
 
+"""
+	We take two pointers, one k nodes before the other.
+	When the runner hit the end, the second pointer references the right element.
+
+"""
+def find_kth_runner(your_list, k):
+
+	current = iter(your_list)
+	runner  = iter(your_list)
+
+	for i in range(k):
+		try:
+			next(runner)
+		except :
+			return None
+
+	while runner:
+		try:
+			next(runner)
+			next(current)
+		except :
+			return next(current)
 
 		
 
@@ -39,8 +61,8 @@ if __name__ == "__main__":
 	print(test_list2)
 	
 	kth = find_kth(test_list, test_k)
-	
+	kth_runner = find_kth_runner(test_list2, test_k)
 	
 	print(kth)
-	
+	print(kth_runner)
 	
