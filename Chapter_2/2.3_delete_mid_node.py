@@ -18,13 +18,19 @@ from LinkedList import LinkedList
     1 -> 2 -> 3 -> 4 -> 7 -> 7 -> 8 -> 9
      
     then skip 
-                        
+
     1 -> 2 -> 3 -> 4 -> 7 -> 8 -> 9
 """
 def delete_mid_node(node):
 
     node.value = node.next.value            # Change/copy value from the next node.
     node.next  = node.next.next             # Point two nodes ahead, which delete a node in practice.
+
+"""
+    We should also deal with the case where the node is the last one in the list. 
+    Our algo doesn't work in that situation yet.
+    
+"""
 
 if __name__ == "__main__":
 
