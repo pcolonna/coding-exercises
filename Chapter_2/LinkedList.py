@@ -1,6 +1,10 @@
 from random import randint
 
-
+""" 
+    From the official repo,  careercup/CtCl-6th-Edition-Python
+    Implement linkedlist. Easier to do the questions that way...
+    
+"""
 class LinkedListNode:
 
     def __init__(self, value, nextNode=None, prevNode=None):
