@@ -10,4 +10,4 @@ So if you see multiple versions, it's just me trying different things.
 
 Also comes with too much comments and random remarks.
 
-https://travis-ci.org/pcolonna/coding-exercises.svg?branch=master
+[![Build Status](https://travis-ci.org/pcolonna/coding-exercises.svg?branch=master)](https://travis-ci.org/pcolonna/coding-exercises)
