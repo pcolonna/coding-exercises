@@ -9,3 +9,5 @@ I include the different solutions I come up with, including those that are not o
 So if you see multiple versions, it's just me trying different things.
 
 Also comes with too much comments and random remarks.
+
+https://travis-ci.org/pcolonna/coding-exercises.svg?branch=master
