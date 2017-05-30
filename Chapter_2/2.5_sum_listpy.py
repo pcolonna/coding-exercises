@@ -12,7 +12,7 @@ def sum_list(ll_1, ll_2):
     result_ll      = LinkedList()
 
     while head_1 or head_2:
-
+        result = carry
         if head_1:
             result += head_1.value  
             head_1 = head_1.next
