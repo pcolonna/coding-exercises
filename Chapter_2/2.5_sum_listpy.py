@@ -7,8 +7,8 @@ from LinkedList import LinkedList
 # If necessary, we carry the 1 to the next node.
 def sum_list(ll_1, ll_2):
     result         = 0 
-    head_1, head_2 = ll_1.head, ll_2.head
     carry          = 0
+    head_1, head_2 = ll_1.head, ll_2.head
     result_ll      = LinkedList()
 
     while head_1 or head_2:
