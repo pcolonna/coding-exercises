@@ -21,9 +21,9 @@ class SetOfStack():
     def push(self, value):
         
         if len(self.stacks) == 0:
-        	self.stacks.append([])								# If no stack in the set of stacks, append one at the end.
-        if len(self.stacks[-1]) == self.height:					# If the last stack is high enough...
-        	self.stacks.append([])
+            self.stacks.append([])                              # If no stack in the set of stacks, append one at the end.
+        if len(self.stacks[-1]) == self.height:                 # If the last stack is high enough...
+            self.stacks.append([])
         self.stacks.append(value)                               # The push itself.
 
     # pop the top of stack. 
@@ -34,8 +34,8 @@ class SetOfStack():
 
         value = self.stacks[-1].pop()                           # Pop top of the last stack.
 
-        if len(self.stacks[-1]) == 0:							# If last stack is empty, pop it.
-        	self.stacks.pop()
+        if len(self.stacks[-1]) == 0:                           # If last stack is empty, pop it.
+            self.stacks.pop()
 
         return value
     
