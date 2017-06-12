@@ -6,6 +6,7 @@
 from random import randrange
 
 class Stack(list):
+    
     def peak(self):
         return self[-1]
     def push(self, item):
@@ -22,6 +23,7 @@ class Stack(list):
             
             while not sorted_stack.empty() and sorted_stack.peak() > tmp:
                 unsorted_stack.push(sorted_stack.pop())
+            
             sorted_stack.push(tmp)
             
             while not unsorted_stack.empty() and unsorted_stack.peak() >= sorted_stack.peak():
